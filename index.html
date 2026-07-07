@@ -5,6 +5,212 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Organic Produce Summit 2026 — VPM Show Page</title>
 <style>
+  :root { color-scheme: light; --brand: #9ecd51; --brand-dark: #7fb33e; --ink: #333333; --muted: #6b7280; --bg: #f8f9fa; --card: #ffffff; --line: #e7e7e7; --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font); line-height: 1.6; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 28px 20px 64px; }
+  .hero { background: var(--brand-dark); color: #fff; border-radius: 16px; padding: 32px 36px 28px; margin-bottom: 20px; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; top: -40px; right: -40px; width: 220px; height: 220px; background: rgba(255,255,255,.07); border-radius: 50%; }
+  .hero .kicker { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; opacity: .85; margin-bottom: 6px; }
+  .hero h1 { font-size: 32px; line-height: 1.15; font-weight: 700; margin-bottom: 4px; }
+  .hero .sub { font-size: 15px; opacity: .9; margin-bottom: 20px; }
+  .hero .badge { display: inline-block; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: 3px 12px; font-size: 12px; font-weight: 600; }
+  .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 20px; }
+  .glance-item { background: rgba(255,255,255,.14); border-radius: 10px; padding: 10px 14px; }
+  .glance-item .lab { font-size: 10px; text-transform: uppercase; letter-spacing: .07em; opacity: .8; }
+  .glance-item .val { font-size: 15px; font-weight: 700; margin-top: 3px; }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 26px; margin-bottom: 16px; }
+  section h2 { font-size: 16px; font-weight: 700; color: var(--brand-dark); text-transform: uppercase; letter-spacing: .06em; padding-bottom: 10px; border-bottom: 2px solid var(--line); margin-bottom: 14px; }
+  section p { font-size: 14px; line-height: 1.65; color: var(--ink); }
+  .targets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .target-card { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; text-align: center; }
+  .target-card .num { font-size: 36px; font-weight: 800; color: var(--brand-dark); line-height: 1; }
+  .target-card .unit { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin-top: 4px; }
+  .target-card .note { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+  .links-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .link-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; font-size: 13px; color: var(--brand-dark); text-decoration: none; font-weight: 500; }
+  .link-chip.tbd { color: var(--muted); cursor: default; }
+  .story-list { list-style: none; }
+  .story-item { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .story-item:last-child { border-bottom: none; }
+  .story-item a { font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; line-height: 1.4; display: block; }
+  .story-item a:hover { color: var(--brand-dark); }
+  .story-meta { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+  .story-pub { font-size: 11px; font-weight: 700; color: var(--brand); text-transform: uppercase; letter-spacing: .06em; }
+  .story-date { font-size: 11px; color: var(--muted); }
+  .quote-block { background: #edf7d6; border-left: 4px solid var(--brand); border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 14px 0; font-size: 15px; font-style: italic; line-height: 1.7; }
+  .thread-block { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin-top: 12px; font-size: 14px; }
+  .thread-label { font-size: 10px; font-weight: 700; color: var(--brand-dark); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+  .q-list { list-style: none; }
+  .q-list li { padding: 8px 0 8px 20px; border-bottom: 1px solid var(--line); font-size: 14px; position: relative; }
+  .q-list li:last-child { border-bottom: none; }
+  .q-list li::before { content: "→"; position: absolute; left: 0; color: var(--brand); font-weight: 700; }
+  .always-ask { background: #edf7d6; border-radius: 10px; padding: 14px 18px; margin-top: 14px; font-size: 14px; font-style: italic; line-height: 1.6; }
+  .always-ask strong { font-style: normal; font-size: 11px; display: block; text-transform: uppercase; letter-spacing: .07em; color: var(--brand-dark); margin-bottom: 4px; }
+  .sched-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .sched-table th { text-align: left; padding: 8px 12px; background: var(--brand-dark); color: #fff; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+  .sched-table th:first-child { border-radius: 8px 0 0 0; }
+  .sched-table th:last-child { border-radius: 0 8px 0 0; }
+  .sched-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .sched-table tr:last-child td { border-bottom: none; }
+  .sched-table td.day { font-weight: 700; white-space: nowrap; color: var(--brand-dark); }
+  .sched-table td.tbd { color: var(--muted); font-style: italic; }
+  .debrief-fields { display: grid; gap: 10px; }
+  .field-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--brand-dark); margin-bottom: 4px; }
+  .field-box { background: var(--bg); border: 1px dashed var(--line); border-radius: 8px; padding: 10px 14px; min-height: 44px; font-size: 13px; color: var(--muted); font-style: italic; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 28px; }
+  .pts-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .pts-table th { text-align: left; padding: 6px 10px 8px 0; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; border-bottom: 2px solid var(--line); }
+  .pts-table th:nth-child(2) { text-align: center; padding: 6px 10px 8px; }
+  .pts-table th:nth-child(3) { text-align: center; padding: 6px 0 8px 10px; }
+  .pts-table td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .pts-table td:nth-child(2) { text-align: center; padding: 9px 10px; }
+  .pts-table td:nth-child(3) { text-align: center; padding: 9px 0 9px 10px; font-weight: 800; font-size: 17px; color: var(--brand-dark); }
+  .pts-table tr:last-child td { border-bottom: none; }
+  .pill-card { background: #edf7d6; color: var(--brand-dark); border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 600; }
+  .pill-badge { background: #f0f4ff; color: #4a6cf7; border-radius: 4px; padding: 2px 8px; font-size: 12px; font-weight: 600; }
+  .or { color: var(--muted); font-size: 11px; }
+  @media (max-width: 600px) { .targets-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 24px; } .glance { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Vantage Point Media · Trade Show Prep</p>
+    <h1>Organic Produce Summit 2026</h1>
+    <p class="sub">Monterey Conference Center · Monterey, CA · July 14–16, 2026</p>
+    <span class="badge">🌿 10th Anniversary</span>
+    <div class="glance">
+      <div class="glance-item"><div class="lab">Dates</div><div class="val">Jul 14–16</div></div>
+      <div class="glance-item"><div class="lab">Venue</div><div class="val">Monterey CC</div></div>
+      <div class="glance-item"><div class="lab">Booth Flags</div><div class="val">50 / person</div></div>
+      <div class="glance-item"><div class="lab">Portraits</div><div class="val">15 / person</div></div>
+      <div class="glance-item"><div class="lab">Traveling</div><div class="val">[INSERT]</div></div>
+    </div>
+  </header>
+
+  <section>
+    <h2>Key Links</h2>
+    <div class="links-row">
+      <a href="https://docs.google.com/spreadsheets/d/1Iok42MmyiEXC0_-lpL0mpwBh61Sth0p-dOL5dAI5NyA/edit?usp=sharing" class="link-chip" target="_blank">📋 Exhibitor Spreadsheet</a>
+      <a href="https://organicproducesummit.com" class="link-chip" target="_blank">🌐 Event Site</a>
+      <a class="link-chip tbd">🗺 Floorplan — TBD</a>
+      <a class="link-chip tbd">📸 Flickr Albums [INSERT]</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>This Show's Strategy</h2>
+    <p style="font-size:14px;color:var(--muted);font-style:italic;margin-bottom:14px">TBD — full strategy to be added</p>
+    <div style="background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px 20px;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand-dark);margin-bottom:12px">Goodman/Enrichment — Contact Priority &amp; Points</div>
+      <table class="pts-table">
+        <thead>
+          <tr><th>Contact Type</th><th>Method</th><th>Points</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Decision maker</strong></td><td><span class="pill-card">Card</span></td><td>10</td></tr>
+          <tr><td><strong>Decision maker</strong></td><td><span class="pill-badge">Badge</span></td><td>8</td></tr>
+          <tr><td><strong>Retailer / buying org</strong></td><td><span class="pill-card">Card</span> <span class="or">or</span> <span class="pill-badge">Badge</span></td><td>6</td></tr>
+          <tr><td><strong>Salesperson → DM connector</strong></td><td><span class="pill-card">Card</span> <span class="or">or</span> <span class="pill-badge">Badge</span></td><td>4</td></tr>
+          <tr><td><strong>Net-new → DMN/ANUK subscriber</strong></td><td><span class="pill-card">Card</span> <span class="or">or</span> <span class="pill-badge">Badge</span></td><td>2</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:13px;color:var(--muted);margin-top:14px;font-style:italic">Goodman can also be used for reference notes on folks already in the system — e.g., if a story follow-up or reminder is needed for the show.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Targets</h2>
+    <div class="targets-grid">
+      <div class="target-card"><div class="num">50</div><div class="unit">Booth flags / person</div><div class="note">Mark your initials column in the exhibitor sheet</div></div>
+      <div class="target-card"><div class="num">10</div><div class="unit">Yearbook portraits / person</div><div class="note">Upload to your own OPS 2026 Flickr album</div></div>
+      <div class="target-card"><div class="num">5</div><div class="unit">Shop Talks</div><div class="note">JO Suggestion — confirm videographer + subject list</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Lead-Up Coverage</h2>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:14px">"We ran your showcase piece last week" opens doors. Use these in every relevant booth conversation.</p>
+    <ul class="story-list">
+      <li class="story-item"><a href="https://www.andnowuknow.com/quick-dish/west-pak-avocado-debut-organic-category-refinements-and-new-merchandising/anuk-staff/105523" target="_blank">West Pak Avocado to Debut Organic Category Refinements and New Merchandising at OPS; Mario Pacheco and Joe Nava Comment</a><div class="story-meta"><span class="story-pub">AndNowUKnow</span><span class="story-date">July 6, 2026</span></div></li>
+      <li class="story-item"><a href="https://www.andnowuknow.com/quick-dish/freska-produces-gary-clevenger-discusses-dependable-premium-organic-mango/melissa-de-leon-chavez/105493" target="_blank">Freska Produce's Gary Clevenger Discusses Dependable Premium Organic Mango Supply in Lead Up to OPS 2026</a><div class="story-meta"><span class="story-pub">AndNowUKnow</span><span class="story-date">July 6, 2026</span></div></li>
+      <li class="story-item"><a href="https://www.andnowuknow.com/bloom/awe-sum-organics-david-posner-discusses-ops-2026-showcase/chandler-james/105514" target="_blank">Awe Sum Organics' David Posner Discusses OPS 2026 Showcase</a><div class="story-meta"><span class="story-pub">AndNowUKnow</span><span class="story-date">July 6, 2026</span></div></li>
+      <li class="story-item"><a href="https://www.andnowuknow.com/buyside-news/ipr-fresh-focuses-driving-long-term-organic-growth-2026-ops-nears-mark/anne-allen/105399" target="_blank">IPR Fresh Focuses on Driving Long-Term Organic Growth as 2026 OPS Nears; Mark Munger Discusses</a><div class="story-meta"><span class="story-pub">AndNowUKnow</span><span class="story-date">July 3, 2026</span></div></li>
+      <li class="story-item"><a href="https://www.andnowuknow.com/quick-dish/giorgio-freshs-bryan-shelton-discusses-ops-2026-showcase/chandler-james/105472" target="_blank">Giorgio Fresh's Bryan Shelton Discusses OPS 2026 Showcase</a><div class="story-meta"><span class="story-pub">AndNowUKnow</span><span class="story-date">July 2, 2026</span></div></li>
+      <li class="story-item"><a href="https://www.andnowuknow.com/quick-dish/ian-lemay-discusses-california-table-grape-commissions-organic-produce/melissa-de-leon-chavez/105487" target="_blank">Ian LeMay Discusses California Table Grape Commission's Organic Produce Summit Debut</a><div class="story-meta"><span class="story-pub">AndNowUKnow</span><span class="story-date">July 2, 2026</span></div></li>
+      <li class="story-item"><a href="https://www.andnowuknow.com/buyside-news/nature-fresh-farms-bob-bryan-amanda-armstrong-and-matt-quiring-discuss-ops/chandler-james/105467" target="_blank">Nature Fresh Farms' Bob Bryan, Amanda Armstrong, and Matt Quiring Discuss OPS 2026 Showcase</a><div class="story-meta"><span class="story-pub">AndNowUKnow</span><span class="story-date">July 2, 2026</span></div></li>
+      <li class="story-item"><a href="https://www.andnowuknow.com/quick-dish/chelan-freshs-mac-riggan-discusses-2026-organic-produce-summit-showcase/chandler-james/105222" target="_blank">Chelan Fresh's Mac Riggan Discusses 2026 Organic Produce Summit Showcase</a><div class="story-meta"><span class="story-pub">AndNowUKnow</span><span class="story-date">June 2026</span></div></li>
+      <li class="story-item"><a href="https://www.andnowuknow.com/buyside-news/driscolls-garland-reiter-jr-discusses-organic-expansion-ahead-ops-2026/chandler-james/105232" target="_blank">Driscoll's Garland Reiter Jr. Discusses Organic Expansion Ahead of OPS 2026</a><div class="story-meta"><span class="story-pub">AndNowUKnow</span><span class="story-date">June 2026</span></div></li>
+      <li class="story-item"><a href="https://www.andnowuknow.com/behind-greens/sarah-lucas-superfresh-growersr-discusses-ops-2026-showcase/chandler-james/105009" target="_blank">Superfresh Growers' Sarah Lucas Discusses OPS 2026 Showcase</a><div class="story-meta"><span class="story-pub">AndNowUKnow</span><span class="story-date">June 2026</span></div></li>
+      <li class="story-item"><a href="https://www.andnowuknow.com/whats-store/volm-companies-marsha-pozza-discusses-organic-produce-summit-2026-showcase/chandler-james/105165" target="_blank">Volm Companies' Marsha Pozza Discusses Organic Produce Summit 2026 Showcase</a><div class="story-meta"><span class="story-pub">AndNowUKnow</span><span class="story-date">June 2026</span></div></li>
+      <li class="story-item"><a href="https://www.andnowuknow.com/buyside-news/happy-dirts-sandi-kronick-and-pat-bayor-discuss-ops-2026/chandler-james/104999" target="_blank">Happy Dirt's Sandi Kronick and Pat Bayor Discuss OPS 2026</a><div class="story-meta"><span class="story-pub">AndNowUKnow</span><span class="story-date">June 2026</span></div></li>
+    </ul>
+    <p style="font-size:12px;color:var(--muted);margin-top:12px;font-style:italic">More stories will be added as we approach July 14.</p>
+  </section>
+
+  <section>
+    <h2>On the Floor: Shared Narrative</h2>
+    <p style="font-size:13px;color:var(--muted)">Everyone on the team should be able to say this in their own words:</p>
+    <div class="quote-block">"If someone were to Google you, what would they find? We help companies actively build their digital presence and reputation—a layered, cumulative digital mosaic that proves who they are, what they've built, and why they matter. If companies don't shape this narrative themselves, it will be shaped for them—by algorithms, competitors, AI summaries, and search results that flatten nuance and value."</div>
+    <div class="thread-block"><div class="thread-label">OPS-specific thread</div><p style="font-size:14px">Organic as identity. How are companies shaping their organic story beyond the certification? Where does the premium hold, and where is it being competed away? Listen closely—this is the editorial thread we'll be pulling through H2.</p></div>
+  </section>
+
+  <section>
+    <h2>Questions We're Asking</h2>
+    <ul class="q-list">
+      <li>Where do you see OPS / the organic category heading in the next few years?</li>
+      <li>What's feeling most different in the current market or show landscape?</li>
+      <li>What victories have you celebrated in the past year?</li>
+      <li>Where are you feeling the most pressure right now?</li>
+      <li>Where can we better support you?</li>
+      <li>Where could stronger storytelling, visibility, or marketing make a difference for you?</li>
+    </ul>
+    <div class="always-ask"><strong>Always ask before leaving a booth</strong>"What are the top two or three topics impacting you—or the industry at large—that you'd love to read more about?" Treat the answer as editorial-pipeline gold. It's next quarter's story calendar, sourced straight from the floor.</div>
+  </section>
+
+  <section>
+    <h2>Schedule at a Glance</h2>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:14px">OPS 2026 has not yet published its full agenda—check the event app for live updates.</p>
+    <table class="sched-table">
+      <thead><tr><th>Day</th><th>Time</th><th>Event</th><th>Location</th></tr></thead>
+      <tbody>
+        <tr><td class="day">Sun 7/13</td><td class="tbd">TBD</td><td>Travel / early arrivals</td><td>Monterey, CA</td></tr>
+        <tr><td class="day">Sun 7/13</td><td>Evening</td><td>Team dinner (if overlapping)</td><td class="tbd">TBD</td></tr>
+        <tr><td class="day">Mon 7/14</td><td class="tbd">TBD</td><td>Show floor opens</td><td>Monterey Conference Center</td></tr>
+        <tr><td class="day">Mon 7/14</td><td>Evening</td><td><strong>Besties Awards</strong></td><td class="tbd">TBD — confirm venue</td></tr>
+        <tr><td class="day">Tue 7/15</td><td class="tbd">TBD</td><td>Show floor</td><td>Monterey Conference Center</td></tr>
+        <tr><td class="day">Tue 7/15</td><td>Evening</td><td>Dinners / meetups</td><td class="tbd">See Assignments</td></tr>
+        <tr><td class="day">Wed 7/16</td><td class="tbd">TBD</td><td>Show floor / close</td><td>Monterey Conference Center</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Post-Show Debrief Template</h2>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Submit within 1–2 days of the floor closing. Flag any quote as "[DRAFT—verify with source]" until confirmed verbatim.</p>
+    <div class="debrief-fields">
+      <div><div class="field-label">Priority conversations</div><div class="field-box">Fill in while fresh…</div></div>
+      <div><div class="field-label">New leads</div><div class="field-box">Fill in while fresh…</div></div>
+      <div><div class="field-label">Rekindling opportunities</div><div class="field-box">Fill in while fresh…</div></div>
+      <div><div class="field-label">Strong quotes / themes</div><div class="field-box">Fill in while fresh…</div></div>
+      <div><div class="field-label">Follow-up needs</div><div class="field-box">Fill in while fresh…</div></div>
+      <div><div class="field-label">Story ideas</div><div class="field-box">Fill in while fresh…</div></div>
+      <div><div class="field-label">Coverage opportunities</div><div class="field-box">Fill in while fresh…</div></div>
+    </div>
+  </section>
+
+  <footer>Vantage Point Media · OPS 2026 Prep · Prepared July 6, 2026</footer>
+</div>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Organic Produce Summit 2026 — VPM Show Page</title>
+<style>
   :root {
     color-scheme: light;
     --brand: #9ecd51;
